@@ -8,284 +8,101 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --pink-light:#fce4ec;
-  --pink:#f48fb1;
-  --pink-mid:#e91e8c;
-  --pink-deep:#c2185b;
-  --pink-bg:#fff0f5;
-  --gold:#f59e0b;
-  --gold-light:#fef3c7;
-  --text:#3d1a2e;
-  --text-muted:#9e6b7e;
-  --white:#ffffff;
-  --shadow:rgba(244,143,177,0.35);
+  --pink-light:#fce4ec;--pink:#f48fb1;--pink-mid:#e91e8c;
+  --pink-deep:#c2185b;--pink-bg:#fff0f5;--gold:#f59e0b;
+  --text:#3d1a2e;--text-muted:#9e6b7e;--shadow:rgba(244,143,177,0.35);
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'Noto Sans KR',sans-serif;
-  background:var(--pink-bg);
-  min-height:100vh;
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* BG floating coins */
+body{font-family:'Noto Sans KR',sans-serif;background:var(--pink-bg);min-height:100vh;color:var(--text);overflow-x:hidden}
 .bg-coins{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.bg-coin{
-  position:absolute;font-size:20px;opacity:0.08;
-  animation:coinFloat linear infinite;
-}
-@keyframes coinFloat{
-  0%{transform:translateY(110vh) rotate(0deg)}
-  100%{transform:translateY(-10vh) rotate(720deg)}
-}
-
-/* LAYOUT */
+.bg-coin{position:absolute;font-size:20px;opacity:0.08;animation:coinFloat linear infinite}
+@keyframes coinFloat{0%{transform:translateY(110vh) rotate(0deg)}100%{transform:translateY(-10vh) rotate(720deg)}}
 .page{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:24px 20px 80px}
-
-/* HEADER */
 .header{text-align:center;padding:40px 0 20px;animation:fadeDown 0.7s ease both}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-.header-badge{
-  display:inline-block;
-  background:var(--pink-deep);color:#fff;
-  font-size:12px;font-weight:700;letter-spacing:2px;
-  padding:4px 14px;border-radius:99px;margin-bottom:12px;
-  font-family:'Noto Sans KR',sans-serif;
-}
-.header h1{
-  font-family:'Gaegu',cursive;
-  font-size:clamp(26px,6vw,38px);
-  font-weight:700;
-  color:var(--text);
-  line-height:1.3;
-  margin-bottom:6px;
-}
+.header-badge{display:inline-block;background:var(--pink-deep);color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:99px;margin-bottom:12px}
+.header h1{font-family:'Gaegu',cursive;font-size:clamp(26px,6vw,38px);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px}
 .header .sub{font-size:14px;color:var(--text-muted)}
-
-/* PROGRESS CARD */
-.progress-card{
-  background:#fff;
-  border-radius:24px;
-  padding:24px;
-  margin:20px 0;
-  box-shadow:0 8px 32px var(--shadow);
-  animation:fadeUp 0.7s 0.1s ease both;
-}
+.progress-card{background:#fff;border-radius:24px;padding:24px;margin:20px 0;box-shadow:0 8px 32px var(--shadow);animation:fadeUp 0.7s 0.1s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .total-display{text-align:center;margin-bottom:16px}
-.total-display .amount{
-  font-family:'Gaegu',cursive;
-  font-size:clamp(32px,8vw,52px);
-  font-weight:700;
-  color:var(--pink-deep);
-  line-height:1;
-}
+.total-display .amount{font-family:'Gaegu',cursive;font-size:clamp(32px,8vw,52px);font-weight:700;color:var(--pink-deep);line-height:1}
 .total-display .label{font-size:13px;color:var(--text-muted);margin-top:4px}
-.progress-track{
-  background:#fce4ec;border-radius:99px;height:22px;overflow:hidden;
-  position:relative;margin:8px 0 6px;
-}
-.progress-fill{
-  height:100%;border-radius:99px;
-  background:linear-gradient(90deg,#f48fb1,#e91e8c,#c2185b);
-  transition:width 0.5s cubic-bezier(.34,1.56,.64,1);
-  position:relative;overflow:hidden;
-}
-.progress-fill::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.3) 50%,transparent 100%);
-  animation:shimmer 1.5s infinite;
-}
+.progress-track{background:#fce4ec;border-radius:99px;height:22px;overflow:hidden;position:relative;margin:8px 0 6px}
+.progress-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#f48fb1,#e91e8c,#c2185b);transition:width 0.5s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.3) 50%,transparent 100%);animation:shimmer 1.5s infinite}
 @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 .progress-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted)}
-.pct-badge{
-  display:inline-block;background:var(--pink-deep);color:#fff;
-  font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px;
-}
+.pct-badge{display:inline-block;background:var(--pink-deep);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px}
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
-.stat-box{
-  background:var(--pink-bg);border-radius:14px;padding:12px 8px;text-align:center;
-  border:1.5px solid #fce4ec;
-}
+.stat-box{background:var(--pink-bg);border-radius:14px;padding:12px 8px;text-align:center;border:1.5px solid #fce4ec}
 .stat-box .sv{font-size:16px;font-weight:700;color:var(--pink-deep);font-family:'Gaegu',cursive}
 .stat-box .sl{font-size:11px;color:var(--text-muted);margin-top:2px}
-
-/* NAME SETUP */
-.name-screen{
-  background:#fff;border-radius:24px;padding:32px 24px;
-  box-shadow:0 8px 32px var(--shadow);text-align:center;
-  animation:fadeUp 0.7s 0.2s ease both;
-}
+.name-screen{background:#fff;border-radius:24px;padding:32px 24px;box-shadow:0 8px 32px var(--shadow);text-align:center;animation:fadeUp 0.7s 0.2s ease both}
 .name-screen h2{font-family:'Gaegu',cursive;font-size:22px;font-weight:700;margin-bottom:8px}
 .name-screen p{font-size:14px;color:var(--text-muted);margin-bottom:20px}
 .name-input-row{display:flex;gap:10px;max-width:320px;margin:0 auto}
-.name-input-row input{
-  flex:1;padding:12px 16px;font-size:15px;font-family:'Noto Sans KR',sans-serif;
-  border:2px solid #fce4ec;border-radius:14px;outline:none;color:var(--text);
-  background:#fff;transition:border-color 0.2s;
-}
+.name-input-row input{flex:1;padding:12px 16px;font-size:15px;font-family:'Noto Sans KR',sans-serif;border:2px solid #fce4ec;border-radius:14px;outline:none;color:var(--text);background:#fff;transition:border-color 0.2s}
 .name-input-row input:focus{border-color:var(--pink)}
-.btn-start{
-  padding:12px 20px;background:var(--pink-deep);color:#fff;
-  border:none;border-radius:14px;font-size:15px;font-weight:700;
-  cursor:pointer;font-family:'Noto Sans KR',sans-serif;
-  transition:transform 0.15s,background 0.2s;white-space:nowrap;
-}
+.btn-start{padding:12px 20px;background:var(--pink-deep);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:transform 0.15s,background 0.2s;white-space:nowrap}
 .btn-start:hover{background:#ad1457;transform:scale(1.04)}
-.btn-start:active{transform:scale(0.97)}
-
-/* PIG SECTION */
-.pig-section{
-  background:#fff;border-radius:24px;padding:28px 20px 20px;
-  box-shadow:0 8px 32px var(--shadow);
-  text-align:center;margin:0 0 20px;
-  animation:fadeUp 0.7s 0.2s ease both;
-  position:relative;overflow:hidden;
-}
-.my-name-tag{
-  font-size:13px;color:var(--text-muted);margin-bottom:4px;
-}
+.pig-section{background:#fff;border-radius:24px;padding:28px 20px 20px;box-shadow:0 8px 32px var(--shadow);text-align:center;margin:0 0 20px;animation:fadeUp 0.7s 0.2s ease both;position:relative;overflow:hidden}
+.my-name-tag{font-size:13px;color:var(--text-muted);margin-bottom:4px}
 .my-name-tag span{font-weight:700;color:var(--pink-deep)}
 .pig-wrap{position:relative;display:inline-block;margin:8px 0}
 #pig-canvas{display:block;margin:0 auto}
-.stage-label{
-  font-family:'Gaegu',cursive;font-size:18px;font-weight:700;
-  color:var(--pink-deep);margin-top:6px;
-}
-
-/* COIN INSERT ANIMATION */
-.coin-insert{
-  position:absolute;
-  top:10px;left:50%;
-  transform:translateX(-50%);
-  font-size:22px;
-  animation:coinDrop 0.6s ease-in forwards;
-  pointer-events:none;
-  z-index:10;
-}
-@keyframes coinDrop{
-  0%{opacity:1;transform:translateX(-50%) translateY(-10px) rotate(0deg)}
-  80%{opacity:1;transform:translateX(-50%) translateY(60px) rotate(360deg) scale(0.5)}
-  100%{opacity:0;transform:translateX(-50%) translateY(70px) rotate(400deg) scale(0)}
-}
-
-/* DONATE BTN */
+.stage-label{font-family:'Gaegu',cursive;font-size:18px;font-weight:700;color:var(--pink-deep);margin-top:6px}
+.coin-insert{position:absolute;top:10px;left:50%;transform:translateX(-50%);font-size:22px;animation:coinDrop 0.6s ease-in forwards;pointer-events:none;z-index:10}
+@keyframes coinDrop{0%{opacity:1;transform:translateX(-50%) translateY(-10px) rotate(0deg)}80%{opacity:1;transform:translateX(-50%) translateY(60px) rotate(360deg) scale(0.5)}100%{opacity:0;transform:translateX(-50%) translateY(70px) rotate(400deg) scale(0)}}
 .donate-btn-wrap{margin-top:12px}
-.donate-btn{
-  display:inline-block;padding:16px 48px;
-  background:linear-gradient(135deg,#e91e8c,#c2185b);
-  color:#fff;font-size:20px;font-weight:700;
-  border:none;border-radius:99px;cursor:pointer;
-  font-family:'Gaegu',cursive;letter-spacing:1px;
-  box-shadow:0 6px 24px rgba(194,24,91,0.35);
-  transition:transform 0.15s,box-shadow 0.15s;
-  position:relative;overflow:hidden;
-}
-.donate-btn::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent);
-}
+.donate-btn{display:inline-block;padding:16px 48px;background:linear-gradient(135deg,#e91e8c,#c2185b);color:#fff;font-size:20px;font-weight:700;border:none;border-radius:99px;cursor:pointer;font-family:'Gaegu',cursive;letter-spacing:1px;box-shadow:0 6px 24px rgba(194,24,91,0.35);transition:transform 0.15s,box-shadow 0.15s;position:relative;overflow:hidden}
+.donate-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent)}
 .donate-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 30px rgba(194,24,91,0.45)}
 .donate-btn:active{transform:scale(0.97)}
 .donate-btn:disabled{background:#ccc;box-shadow:none;cursor:not-allowed}
-.click-float{
-  position:fixed;pointer-events:none;z-index:999;
-  font-family:'Gaegu',cursive;font-size:22px;font-weight:700;color:var(--pink-deep);
-  text-shadow:0 2px 8px rgba(255,255,255,0.8);
-  animation:floatUp 0.9s ease-out forwards;
-}
-@keyframes floatUp{
-  0%{opacity:1;transform:translateY(0) scale(1)}
-  100%{opacity:0;transform:translateY(-70px) scale(1.3)}
-}
-
-/* TABS */
+.click-float{position:fixed;pointer-events:none;z-index:999;font-family:'Gaegu',cursive;font-size:22px;font-weight:700;color:var(--pink-deep);text-shadow:0 2px 8px rgba(255,255,255,0.8);animation:floatUp 0.9s ease-out forwards}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-70px) scale(1.3)}}
 .tabs{display:flex;gap:8px;margin:20px 0 12px}
-.tab-btn{
-  flex:1;padding:10px;border-radius:14px;border:2px solid #fce4ec;
-  background:#fff;font-size:14px;font-weight:700;cursor:pointer;
-  color:var(--text-muted);font-family:'Noto Sans KR',sans-serif;
-  transition:all 0.2s;
-}
+.tab-btn{flex:1;padding:10px;border-radius:14px;border:2px solid #fce4ec;background:#fff;font-size:14px;font-weight:700;cursor:pointer;color:var(--text-muted);font-family:'Noto Sans KR',sans-serif;transition:all 0.2s}
 .tab-btn.active{background:var(--pink-deep);color:#fff;border-color:var(--pink-deep)}
-
-/* RANKING */
-.section-card{
-  background:#fff;border-radius:24px;padding:20px;
-  box-shadow:0 8px 32px var(--shadow);margin-bottom:16px;
-  animation:fadeUp 0.7s 0.3s ease both;
-}
+.section-card{background:#fff;border-radius:24px;padding:20px;box-shadow:0 8px 32px var(--shadow);margin-bottom:16px}
 .section-title{font-family:'Gaegu',cursive;font-size:18px;font-weight:700;margin-bottom:14px;color:var(--text)}
 .rank-list{list-style:none}
-.rank-item{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;border-radius:14px;margin-bottom:6px;
-  background:var(--pink-bg);border:1.5px solid #fce4ec;
-  transition:transform 0.15s;
-}
+.rank-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;margin-bottom:6px;background:var(--pink-bg);border:1.5px solid #fce4ec;transition:transform 0.15s}
 .rank-item:hover{transform:translateX(3px)}
-.rank-num{
-  font-family:'Gaegu',cursive;font-size:18px;font-weight:700;
-  min-width:28px;text-align:center;color:var(--text-muted);
-}
-.rank-num.gold{color:#f59e0b}
-.rank-num.silver{color:#94a3b8}
-.rank-num.bronze{color:#b45309}
+.rank-num{font-family:'Gaegu',cursive;font-size:18px;font-weight:700;min-width:28px;text-align:center;color:var(--text-muted)}
+.rank-num.gold{color:#f59e0b}.rank-num.silver{color:#94a3b8}.rank-num.bronze{color:#b45309}
 .rank-name{flex:1;font-size:14px;font-weight:500}
-.rank-stage{font-size:13px;margin-right:2px}
 .rank-amt{font-size:14px;font-weight:700;color:var(--pink-deep);font-family:'Gaegu',cursive}
 .rank-me{font-size:11px;background:#fce4ec;color:var(--pink-deep);padding:2px 7px;border-radius:99px;margin-left:4px;font-weight:700}
-
-/* GUESTBOOK */
 .gb-list{max-height:280px;overflow-y:auto;margin-bottom:12px;padding-right:4px}
 .gb-list::-webkit-scrollbar{width:4px}
 .gb-list::-webkit-scrollbar-thumb{background:#fce4ec;border-radius:4px}
-.gb-item{
-  padding:12px;background:var(--pink-bg);border-radius:14px;
-  margin-bottom:8px;border:1.5px solid #fce4ec;
-}
+.gb-item{padding:12px;background:var(--pink-bg);border-radius:14px;margin-bottom:8px;border:1.5px solid #fce4ec}
 .gb-meta{font-size:11px;color:var(--text-muted);margin-bottom:4px}
 .gb-msg{font-size:14px;color:var(--text)}
 .gb-input-row{display:flex;gap:8px}
-.gb-input-row input{
-  flex:1;padding:11px 14px;font-size:14px;
-  border:2px solid #fce4ec;border-radius:14px;outline:none;
-  font-family:'Noto Sans KR',sans-serif;color:var(--text);background:#fff;
-  transition:border-color 0.2s;
-}
+.gb-input-row input{flex:1;padding:11px 14px;font-size:14px;border:2px solid #fce4ec;border-radius:14px;outline:none;font-family:'Noto Sans KR',sans-serif;color:var(--text);background:#fff;transition:border-color 0.2s}
 .gb-input-row input:focus{border-color:var(--pink)}
-.gb-submit{
-  padding:11px 18px;background:var(--pink-deep);color:#fff;
-  border:none;border-radius:14px;font-size:14px;font-weight:700;
-  cursor:pointer;font-family:'Noto Sans KR',sans-serif;
-  transition:background 0.2s,transform 0.15s;white-space:nowrap;
-}
-.gb-submit:hover{background:#ad1457}
-.gb-submit:active{transform:scale(0.97)}
-
-/* EMPTY STATE */
+.gb-submit{padding:11px 18px;background:var(--pink-deep);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background 0.2s,transform 0.15s;white-space:nowrap}
+.gb-submit:hover{background:#ad1457}.gb-submit:active{transform:scale(0.97)}
 .empty{text-align:center;padding:24px;font-size:14px;color:var(--text-muted)}
-
-/* CONFETTI */
-.confetti-piece{
-  position:fixed;width:10px;height:10px;border-radius:2px;
-  pointer-events:none;z-index:9999;
-  animation:confettiFall linear forwards;
-}
-@keyframes confettiFall{
-  0%{opacity:1;transform:translateY(-20px) rotate(0)}
-  100%{opacity:0;transform:translateY(100vh) rotate(720deg)}
-}
-
-/* MOBILE */
-@media(max-width:480px){
-  .stats-row{grid-template-columns:repeat(3,1fr)}
-  .stat-box .sv{font-size:13px}
-}
+.confetti-piece{position:fixed;width:10px;height:10px;border-radius:2px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(-20px) rotate(0)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+.loading-overlay{position:fixed;inset:0;background:var(--pink-bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.loading-overlay .pig-icon{font-size:56px;animation:bounce 0.7s infinite alternate}
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+.loading-overlay p{font-family:'Gaegu',cursive;font-size:18px;color:var(--pink-deep)}
+.online-dot{display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;margin-right:5px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 </style>
 </head>
 <body>
+
+<div class="loading-overlay" id="loading">
+  <div class="pig-icon">🐷</div>
+  <p>저금통 불러오는 중...</p>
+</div>
 
 <div class="bg-coins" id="bg-coins"></div>
 
@@ -296,18 +113,16 @@ body{
     <p class="sub">클릭 한 번 = 1원 &nbsp;·&nbsp; 목표 1,000만원</p>
   </div>
 
-  <!-- PROGRESS -->
-  <div class="progress-card" id="progress-card">
+  <div class="progress-card">
     <div class="total-display">
       <div class="amount" id="total-amount">0원</div>
-      <div class="label">지금까지 모인 금액 <span class="pct-badge" id="pct-badge">0%</span></div>
+      <div class="label"><span class="online-dot"></span>실시간 모금액 <span class="pct-badge" id="pct-badge">0%</span></div>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width:0%"></div>
     </div>
     <div class="progress-labels">
-      <span>0원</span>
-      <span id="goal-label">목표: 10,000,000원</span>
+      <span>0원</span><span>목표: 10,000,000원</span>
     </div>
     <div class="stats-row">
       <div class="stat-box"><div class="sv" id="s-total">0원</div><div class="sl">총 모금액</div></div>
@@ -316,18 +131,16 @@ body{
     </div>
   </div>
 
-  <!-- NAME SETUP -->
-  <div id="name-screen" class="name-screen">
+  <div id="name-screen" class="name-screen" style="display:none">
     <div style="font-size:48px;margin-bottom:12px">🐷</div>
     <h2>어서오세요!</h2>
     <p>닉네임을 입력하고 팔용이 저금통을<br>함께 채워봐요 🪙</p>
     <div class="name-input-row">
-      <input type="text" id="name-input" placeholder="닉네임 입력 (최대 10자)" maxlength="10" />
+      <input type="text" id="name-input" placeholder="닉네임 (최대 10자)" maxlength="10"/>
       <button class="btn-start" onclick="startUser()">시작!</button>
     </div>
   </div>
 
-  <!-- PIG + DONATE -->
   <div id="main-screen" style="display:none">
     <div class="pig-section">
       <div class="my-name-tag">참여자: <span id="my-name-tag"></span></div>
@@ -354,34 +167,46 @@ body{
       <div class="section-title">📬 방명록</div>
       <div class="gb-list" id="gb-list"></div>
       <div class="gb-input-row">
-        <input type="text" id="gb-input" placeholder="응원 메시지를 남겨주세요 😊" maxlength="60" />
+        <input type="text" id="gb-input" placeholder="응원 메시지를 남겨주세요 😊" maxlength="60"/>
         <button class="gb-submit" onclick="postGB()">남기기</button>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-// ---- DATA ----
-const GOAL = 10000000;
-const STORAGE_KEY = 'palryong_v2';
-const IP_KEY = '_palryong_ip';
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, onValue, runTransaction, push, query, orderByChild, limitToLast, set, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-function loadData() {
-  try { const r = localStorage.getItem(STORAGE_KEY); if(r) return JSON.parse(r); } catch(e){}
-  return { total:0, users:{}, guestbook:[] };
-}
-function saveData(d) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); } catch(e){} }
+const firebaseConfig = {
+  apiKey: "AIzaSyB9c3XUHmBxHRl5O7xW-BHDPxgT2VryazE",
+  authDomain: "jaei-92248.firebaseapp.com",
+  databaseURL: "https://jaei-92248-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "jaei-92248",
+  storageBucket: "jaei-92248.firebasestorage.app",
+  messagingSenderId: "917159031155",
+  appId: "1:917159031155:web:f1fe0c7bb37d66bd0e9506"
+};
 
-const fakeIP = (() => {
-  let k = localStorage.getItem(IP_KEY);
-  if(!k){ k='ip_'+Math.random().toString(36).slice(2,10); localStorage.setItem(IP_KEY,k); }
-  return k;
-})();
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-let data = loadData();
+// ---- USER ID (per browser) ----
+const UID_KEY = '_palryong_uid';
+let uid = localStorage.getItem(UID_KEY);
+if(!uid){ uid = 'u_'+Math.random().toString(36).slice(2,12); localStorage.setItem(UID_KEY, uid); }
+
 let currentUser = null;
+let myAmount = 0;
 let animFrame = null;
+let allUsers = {};
+
+// ---- REFS ----
+const totalRef   = ref(db, 'total');
+const usersRef   = ref(db, 'users');
+const myRef      = ref(db, 'users/'+uid);
+const gbRef      = ref(db, 'guestbook');
 
 // ---- BG COINS ----
 (function(){
@@ -389,434 +214,310 @@ let animFrame = null;
   const emojis = ['🪙','💰','💵','✨'];
   for(let i=0;i<18;i++){
     const el = document.createElement('div');
-    el.className = 'bg-coin';
-    el.textContent = emojis[i%emojis.length];
-    el.style.left = (Math.random()*100)+'%';
-    el.style.fontSize = (14+Math.random()*16)+'px';
-    el.style.animationDuration = (8+Math.random()*14)+'s';
-    el.style.animationDelay = (-Math.random()*20)+'s';
+    el.className='bg-coin';
+    el.textContent=emojis[i%emojis.length];
+    el.style.left=(Math.random()*100)+'%';
+    el.style.fontSize=(14+Math.random()*16)+'px';
+    el.style.animationDuration=(8+Math.random()*14)+'s';
+    el.style.animationDelay=(-Math.random()*20)+'s';
     wrap.appendChild(el);
   }
 })();
 
 // ---- STAGES ----
-function getStage(amt) {
-  if(amt < 100)    return {name:'새 저금통',   emoji:'🐷', phase:0};
-  if(amt < 500)    return {name:'조금 찼어',    emoji:'🐷', phase:1};
-  if(amt < 1000)   return {name:'동전 소리 찰랑', emoji:'🐷', phase:2};
-  if(amt < 5000)   return {name:'배가 나왔어',  emoji:'🐷', phase:3};
-  if(amt < 20000)  return {name:'통통해지는 중', emoji:'🐷', phase:4};
-  if(amt < 100000) return {name:'빵빵 저금통',  emoji:'🐷', phase:5};
-  if(amt < 500000) return {name:'거대 저금통',  emoji:'🐷', phase:6};
-  return              {name:'전설의 저금통', emoji:'💰', phase:7};
+function getStage(amt){
+  if(amt<100)    return {name:'새 저금통',    phase:0};
+  if(amt<500)    return {name:'조금 찼어',     phase:1};
+  if(amt<1000)   return {name:'동전 소리 찰랑', phase:2};
+  if(amt<5000)   return {name:'배가 나왔어',   phase:3};
+  if(amt<20000)  return {name:'통통해지는 중',  phase:4};
+  if(amt<100000) return {name:'빵빵 저금통',   phase:5};
+  if(amt<500000) return {name:'거대 저금통',   phase:6};
+  return              {name:'전설의 저금통',  phase:7};
 }
 
-// ---- PIG CANVAS ----
-function drawPig(amount) {
+// ---- PIG DRAW ----
+function drawPig(amount){
   const canvas = document.getElementById('pig-canvas');
   const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
+  const W=canvas.width, H=canvas.height;
   ctx.clearRect(0,0,W,H);
+  const GOAL=10000000;
+  const pct=Math.min(amount/GOAL,1);
+  const t=Date.now()/1000;
+  const fat=1+pct*0.75;
+  const hue=340-pct*20, sat=55+pct*30, lgt=75-pct*18;
+  const pigColor=`hsl(${hue},${sat}%,${lgt}%)`;
+  const pigDark =`hsl(${hue},${sat}%,${lgt-15}%)`;
+  const pigLight=`hsl(${hue},${sat-10}%,${lgt+12}%)`;
+  const cx=W/2, cy=H/2+10;
 
-  const pct = Math.min(amount/GOAL, 1);
-  const t = Date.now()/1000;
-  const stage = getStage(amount);
+  ctx.save();ctx.fillStyle='rgba(200,50,100,0.1)';
+  ctx.beginPath();ctx.ellipse(cx,cy+80,65*fat,14,0,0,Math.PI*2);ctx.fill();ctx.restore();
 
-  // Belly fatness: 1.0 to 1.75
-  const fat = 1 + pct * 0.75;
-  // Color shift: light pink -> hot pink -> golden
-  const hue = 340 - pct * 20;
-  const sat = 55 + pct * 30;
-  const lgt = 75 - pct * 18;
-  const pigColor = `hsl(${hue},${sat}%,${lgt}%)`;
-  const pigDark  = `hsl(${hue},${sat}%,${lgt-15}%)`;
-  const pigLight = `hsl(${hue},${sat-10}%,${lgt+12}%)`;
+  const bodyW=90*fat, bodyH=70*(0.9+pct*0.2);
+  const jiggle=pct>0.2?Math.sin(t*2.5)*pct*3:0;
 
-  const cx = W/2;
-  const cy = H/2 + 10;
+  ctx.save();ctx.fillStyle=pigColor;ctx.strokeStyle=pigDark;ctx.lineWidth=2;
+  ctx.beginPath();ctx.ellipse(cx+jiggle*0.3,cy+jiggle,bodyW,bodyH,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
 
-  // Shadow
-  ctx.save();
-  ctx.fillStyle = 'rgba(200,50,100,0.1)';
-  ctx.beginPath();
-  ctx.ellipse(cx, cy+80, 65*fat, 14, 0, 0, Math.PI*2);
-  ctx.fill();
-  ctx.restore();
+  ctx.save();ctx.fillStyle=pigLight;ctx.globalAlpha=0.5;
+  ctx.beginPath();ctx.ellipse(cx-bodyW*0.15,cy-bodyH*0.2,bodyW*0.42,bodyH*0.35,-0.3,0,Math.PI*2);ctx.fill();ctx.restore();
 
-  // ---- BODY ----
-  const bodyW = 90 * fat;
-  const bodyH = 70 * (0.9 + pct*0.2);
-  // Jiggle when fat
-  const jiggle = pct > 0.2 ? Math.sin(t*2.5)*pct*3 : 0;
-
-  ctx.save();
-  ctx.fillStyle = pigColor;
-  ctx.strokeStyle = pigDark;
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.ellipse(cx+jiggle*0.3, cy+jiggle, bodyW, bodyH, 0, 0, Math.PI*2);
-  ctx.fill();
-  ctx.stroke();
-  ctx.restore();
-
-  // Belly shine
-  ctx.save();
-  ctx.fillStyle = pigLight;
-  ctx.globalAlpha = 0.5;
-  ctx.beginPath();
-  ctx.ellipse(cx-bodyW*0.15, cy-bodyH*0.2, bodyW*0.42, bodyH*0.35, -0.3, 0, Math.PI*2);
-  ctx.fill();
-  ctx.restore();
-
-  // Fill level visual — darker gradient fill from bottom
-  if(amount > 0){
+  if(amount>0){
     ctx.save();
-    ctx.beginPath();
-    ctx.ellipse(cx+jiggle*0.3, cy+jiggle, bodyW, bodyH, 0, 0, Math.PI*2);
-    ctx.clip();
-    const fillH = bodyH*2 * Math.min(pct*2.5, 1);
-    const gy = ctx.createLinearGradient(0, cy+bodyH, 0, cy+bodyH-fillH);
-    gy.addColorStop(0, `hsla(${hue+10},80%,${lgt-25}%,0.55)`);
-    gy.addColorStop(1, `hsla(${hue},70%,${lgt-10}%,0)`);
-    ctx.fillStyle = gy;
-    ctx.fillRect(cx-bodyW, cy+bodyH-fillH, bodyW*2, fillH+10);
-    ctx.restore();
+    ctx.beginPath();ctx.ellipse(cx+jiggle*0.3,cy+jiggle,bodyW,bodyH,0,0,Math.PI*2);ctx.clip();
+    const fillH=bodyH*2*Math.min(pct*2.5,1);
+    const gy=ctx.createLinearGradient(0,cy+bodyH,0,cy+bodyH-fillH);
+    gy.addColorStop(0,`hsla(${hue+10},80%,${lgt-25}%,0.55)`);
+    gy.addColorStop(1,`hsla(${hue},70%,${lgt-10}%,0)`);
+    ctx.fillStyle=gy;ctx.fillRect(cx-bodyW,cy+bodyH-fillH,bodyW*2,fillH+10);ctx.restore();
   }
 
-  // Coin slot on top
-  const slotX = cx + bodyW*0.05;
-  const slotY = cy - bodyH - 4;
-  ctx.save();
-  ctx.fillStyle = pigDark;
-  ctx.beginPath();
-  ctx.roundRect(slotX-14, slotY-3, 28, 7, 3);
-  ctx.fill();
-  ctx.restore();
+  const slotX=cx+bodyW*0.05, slotY=cy-bodyH-4;
+  ctx.save();ctx.fillStyle=pigDark;ctx.beginPath();ctx.roundRect(slotX-14,slotY-3,28,7,3);ctx.fill();ctx.restore();
 
-  // ---- HEAD ----
-  const headR = 36 + pct*4;
-  const headX = cx + bodyW*0.58;
-  const headY = cy - bodyH*0.35;
-  ctx.save();
-  ctx.fillStyle = pigColor;
-  ctx.strokeStyle = pigDark;
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.ellipse(headX, headY, headR, headR*0.92, 0.15, 0, Math.PI*2);
-  ctx.fill();
-  ctx.stroke();
-  ctx.restore();
+  const headR=36+pct*4, headX=cx+bodyW*0.58, headY=cy-bodyH*0.35;
+  ctx.save();ctx.fillStyle=pigColor;ctx.strokeStyle=pigDark;ctx.lineWidth=2;
+  ctx.beginPath();ctx.ellipse(headX,headY,headR,headR*0.92,0.15,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
 
-  // ---- SNOUT ----
-  const snoutX = headX + headR*0.45;
-  const snoutY = headY + headR*0.25;
-  ctx.save();
-  ctx.fillStyle = pigDark;
-  ctx.beginPath();
-  ctx.ellipse(snoutX, snoutY, 14, 11, 0.1, 0, Math.PI*2);
-  ctx.fill();
-  // Nostrils
-  ctx.fillStyle = `hsl(${hue},${sat}%,${lgt-30}%)`;
-  ctx.beginPath(); ctx.ellipse(snoutX-5, snoutY+1, 3.5, 3, 0, 0, Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.ellipse(snoutX+5, snoutY+1, 3.5, 3, 0, 0, Math.PI*2); ctx.fill();
-  ctx.restore();
+  const snoutX=headX+headR*0.45, snoutY=headY+headR*0.25;
+  ctx.save();ctx.fillStyle=pigDark;ctx.beginPath();ctx.ellipse(snoutX,snoutY,14,11,0.1,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=`hsl(${hue},${sat}%,${lgt-30}%)`;
+  ctx.beginPath();ctx.ellipse(snoutX-5,snoutY+1,3.5,3,0,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.ellipse(snoutX+5,snoutY+1,3.5,3,0,0,Math.PI*2);ctx.fill();ctx.restore();
 
-  // ---- EYES ----
-  const eyeY = headY - headR*0.2;
-  // Left eye
-  ctx.save();
-  ctx.fillStyle = '#3d1a2e';
-  ctx.beginPath(); ctx.arc(headX+headR*0.15, eyeY, 5, 0, Math.PI*2); ctx.fill();
-  ctx.fillStyle = 'white';
-  ctx.beginPath(); ctx.arc(headX+headR*0.15+1.5, eyeY-1.5, 1.8, 0, Math.PI*2); ctx.fill();
-  ctx.restore();
+  const eyeY=headY-headR*0.2;
+  ctx.save();ctx.fillStyle='#3d1a2e';
+  ctx.beginPath();ctx.arc(headX+headR*0.15,eyeY,5,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='white';ctx.beginPath();ctx.arc(headX+headR*0.15+1.5,eyeY-1.5,1.8,0,Math.PI*2);ctx.fill();ctx.restore();
 
-  // ---- EARS ----
-  // Left ear
-  ctx.save();
-  ctx.fillStyle = pigDark;
-  ctx.beginPath();
-  ctx.ellipse(headX-headR*0.3, headY-headR*0.7, 10, 15, -0.4, 0, Math.PI*2);
-  ctx.fill();
-  ctx.fillStyle = `hsl(${hue+10},${sat}%,${lgt+5}%)`;
-  ctx.beginPath();
-  ctx.ellipse(headX-headR*0.3, headY-headR*0.68, 6, 10, -0.4, 0, Math.PI*2);
-  ctx.fill();
-  ctx.restore();
-  // Right ear
-  ctx.save();
-  ctx.fillStyle = pigDark;
-  ctx.beginPath();
-  ctx.ellipse(headX+headR*0.3, headY-headR*0.7, 10, 15, 0.4, 0, Math.PI*2);
-  ctx.fill();
-  ctx.fillStyle = `hsl(${hue+10},${sat}%,${lgt+5}%)`;
-  ctx.beginPath();
-  ctx.ellipse(headX+headR*0.3, headY-headR*0.68, 6, 10, 0.4, 0, Math.PI*2);
-  ctx.fill();
-  ctx.restore();
-
-  // ---- TAIL ----
-  const tailX = cx - bodyW*0.9;
-  const tailY = cy - bodyH*0.1;
-  ctx.save();
-  ctx.strokeStyle = pigDark;
-  ctx.lineWidth = 3;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  const curlAmt = 1 + pct;
-  ctx.moveTo(tailX, tailY);
-  ctx.bezierCurveTo(
-    tailX - 20, tailY - 15*curlAmt,
-    tailX - 30, tailY + 10*curlAmt,
-    tailX - 12, tailY + 18*curlAmt + Math.sin(t*3)*3*pct
-  );
-  ctx.stroke();
-  ctx.restore();
-
-  // ---- LEGS ----
-  const legY = cy + bodyH*0.75;
-  const legPositions = [
-    cx-bodyW*0.55, cx-bodyW*0.2, cx+bodyW*0.1, cx+bodyW*0.45
-  ];
-  legPositions.forEach((lx,i)=>{
-    const wobble = pct > 0.3 ? Math.sin(t*1.5 + i*0.8)*pct*4 : 0;
-    ctx.save();
-    ctx.fillStyle = pigColor;
-    ctx.strokeStyle = pigDark;
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.roundRect(lx-9, legY+wobble, 18, 22, [3,3,8,8]);
-    ctx.fill(); ctx.stroke();
-    ctx.restore();
+  [[headX-headR*0.3,-0.4],[headX+headR*0.3,0.4]].forEach(([ex,angle])=>{
+    ctx.save();ctx.fillStyle=pigDark;ctx.beginPath();ctx.ellipse(ex,headY-headR*0.7,10,15,angle,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=`hsl(${hue+10},${sat}%,${lgt+5}%)`;ctx.beginPath();ctx.ellipse(ex,headY-headR*0.68,6,10,angle,0,Math.PI*2);ctx.fill();ctx.restore();
   });
 
-  // ---- PATTERN OVERLAYS by phase ----
-  if(amount >= 500) {
-    // Polka dots
-    const dotCount = Math.min(Math.floor(amount/500), 20);
-    ctx.save(); ctx.globalAlpha = 0.18;
-    ctx.beginPath(); ctx.ellipse(cx+jiggle*0.3, cy+jiggle, bodyW, bodyH, 0, 0, Math.PI*2); ctx.clip();
+  const tailX=cx-bodyW*0.9, tailY=cy-bodyH*0.1;
+  ctx.save();ctx.strokeStyle=pigDark;ctx.lineWidth=3;ctx.lineCap='round';
+  ctx.beginPath();const curlAmt=1+pct;ctx.moveTo(tailX,tailY);
+  ctx.bezierCurveTo(tailX-20,tailY-15*curlAmt,tailX-30,tailY+10*curlAmt,tailX-12,tailY+18*curlAmt+Math.sin(t*3)*3*pct);
+  ctx.stroke();ctx.restore();
+
+  const legY=cy+bodyH*0.75;
+  [cx-bodyW*0.55,cx-bodyW*0.2,cx+bodyW*0.1,cx+bodyW*0.45].forEach((lx,i)=>{
+    const wobble=pct>0.3?Math.sin(t*1.5+i*0.8)*pct*4:0;
+    ctx.save();ctx.fillStyle=pigColor;ctx.strokeStyle=pigDark;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.roundRect(lx-9,legY+wobble,18,22,[3,3,8,8]);ctx.fill();ctx.stroke();ctx.restore();
+  });
+
+  if(amount>=500){
+    const dotCount=Math.min(Math.floor(amount/500),20);
+    ctx.save();ctx.globalAlpha=0.18;
+    ctx.beginPath();ctx.ellipse(cx+jiggle*0.3,cy+jiggle,bodyW,bodyH,0,0,Math.PI*2);ctx.clip();
     for(let i=0;i<dotCount;i++){
-      const ang = (i/dotCount)*Math.PI*2;
-      const dx = cx + Math.cos(ang+t*0.2)*bodyW*0.55;
-      const dy = cy + Math.sin(ang+t*0.2)*bodyH*0.6;
-      ctx.fillStyle = i%2===0 ? '#fff' : pigDark;
-      ctx.beginPath(); ctx.arc(dx,dy,5+pct*4,0,Math.PI*2); ctx.fill();
+      const ang=(i/dotCount)*Math.PI*2;
+      ctx.fillStyle=i%2===0?'#fff':pigDark;
+      ctx.beginPath();ctx.arc(cx+Math.cos(ang+t*0.2)*bodyW*0.55,cy+Math.sin(ang+t*0.2)*bodyH*0.6,5+pct*4,0,Math.PI*2);ctx.fill();
     }
     ctx.restore();
   }
-
-  if(amount >= 5000) {
-    // Sparkle stars on body
+  if(amount>=5000){
     ctx.save();
-    const sparkCount = Math.min(Math.floor(amount/5000), 12);
-    for(let i=0;i<sparkCount;i++){
-      const ang = (i/sparkCount)*Math.PI*2 + t*0.4;
-      const sx = cx + Math.cos(ang)*bodyW*0.65 + jiggle*0.3;
-      const sy = cy + Math.sin(ang)*bodyH*0.7 + jiggle;
-      ctx.fillStyle = '#fef08a';
-      ctx.globalAlpha = 0.7 + Math.sin(t*3+i)*0.3;
-      ctx.font = `${10+pct*8}px sans-serif`;
-      ctx.textAlign='center'; ctx.textBaseline='middle';
-      ctx.fillText('★', sx, sy);
+    const sc=Math.min(Math.floor(amount/5000),12);
+    for(let i=0;i<sc;i++){
+      const ang=(i/sc)*Math.PI*2+t*0.4;
+      ctx.fillStyle='#fef08a';ctx.globalAlpha=0.7+Math.sin(t*3+i)*0.3;
+      ctx.font=`${10+pct*8}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('★',cx+Math.cos(ang)*bodyW*0.65+jiggle*0.3,cy+Math.sin(ang)*bodyH*0.7+jiggle);
     }
     ctx.restore();
   }
-
-  if(amount >= 50000) {
-    // Gold shimmer band
-    ctx.save();
-    ctx.beginPath(); ctx.ellipse(cx+jiggle*0.3, cy+jiggle, bodyW, bodyH, 0, 0, Math.PI*2); ctx.clip();
-    const gx = ctx.createLinearGradient(cx-bodyW, cy, cx+bodyW, cy);
-    const shimPos = ((t*0.3)%1);
-    gx.addColorStop(Math.max(0,shimPos-0.15), 'rgba(255,215,0,0)');
-    gx.addColorStop(shimPos, 'rgba(255,215,0,0.25)');
-    gx.addColorStop(Math.min(1,shimPos+0.15), 'rgba(255,215,0,0)');
-    ctx.fillStyle = gx;
-    ctx.fillRect(cx-bodyW, cy-bodyH, bodyW*2, bodyH*2);
+  if(amount>=50000){
+    ctx.save();ctx.beginPath();ctx.ellipse(cx+jiggle*0.3,cy+jiggle,bodyW,bodyH,0,0,Math.PI*2);ctx.clip();
+    const gx=ctx.createLinearGradient(cx-bodyW,cy,cx+bodyW,cy);
+    const sp=((t*0.3)%1);
+    gx.addColorStop(Math.max(0,sp-0.15),'rgba(255,215,0,0)');
+    gx.addColorStop(sp,'rgba(255,215,0,0.25)');
+    gx.addColorStop(Math.min(1,sp+0.15),'rgba(255,215,0,0)');
+    ctx.fillStyle=gx;ctx.fillRect(cx-bodyW,cy-bodyH,bodyW*2,bodyH*2);ctx.restore();
+  }
+  if(amount>=200000){
+    ctx.save();ctx.fillStyle='#f59e0b';ctx.strokeStyle='#92400e';ctx.lineWidth=1.5;
+    const crownX=cx+bodyW*0.55, crownY=headY-headR*0.9;
+    ctx.beginPath();ctx.moveTo(crownX-16,crownY+8);ctx.lineTo(crownX-16,crownY-4);ctx.lineTo(crownX-9,crownY+2);
+    ctx.lineTo(crownX,crownY-10);ctx.lineTo(crownX+9,crownY+2);ctx.lineTo(crownX+16,crownY-4);ctx.lineTo(crownX+16,crownY+8);
+    ctx.closePath();ctx.fill();ctx.stroke();
+    ['#ef4444','#3b82f6','#22c55e'].forEach((c,i)=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(crownX-8+i*8,crownY+3,2.5,0,Math.PI*2);ctx.fill();});
     ctx.restore();
   }
-
-  if(amount >= 200000) {
-    // Crown on top
-    ctx.save();
-    ctx.fillStyle = '#f59e0b';
-    ctx.strokeStyle = '#92400e';
-    ctx.lineWidth = 1.5;
-    const crownX = cx + bodyW*0.55;
-    const crownY = headY - headR*0.9;
-    ctx.beginPath();
-    ctx.moveTo(crownX-16, crownY+8);
-    ctx.lineTo(crownX-16, crownY-4);
-    ctx.lineTo(crownX-9, crownY+2);
-    ctx.lineTo(crownX, crownY-10);
-    ctx.lineTo(crownX+9, crownY+2);
-    ctx.lineTo(crownX+16, crownY-4);
-    ctx.lineTo(crownX+16, crownY+8);
-    ctx.closePath();
-    ctx.fill(); ctx.stroke();
-    // jewels
-    ['#ef4444','#3b82f6','#22c55e'].forEach((c,i)=>{
-      ctx.fillStyle=c;
-      ctx.beginPath(); ctx.arc(crownX-8+i*8, crownY+3, 2.5, 0, Math.PI*2); ctx.fill();
-    });
-    ctx.restore();
-  }
-
-  if(amount >= 1000000) {
-    // Rainbow aura
-    ctx.save();
-    const auraR = bodyW + 12 + Math.sin(t*2)*4;
+  if(amount>=1000000){
+    ctx.save();const auraR=bodyW+12+Math.sin(t*2)*4;
     for(let i=5;i>0;i--){
-      ctx.globalAlpha = 0.06;
-      ctx.strokeStyle = `hsl(${(t*60+i*40)%360},80%,60%)`;
-      ctx.lineWidth = 6;
-      ctx.beginPath();
-      ctx.ellipse(cx+jiggle*0.3, cy+jiggle, auraR+i*6, (auraR+i*6)*0.78, 0, 0, Math.PI*2);
-      ctx.stroke();
+      ctx.globalAlpha=0.06;ctx.strokeStyle=`hsl(${(t*60+i*40)%360},80%,60%)`;ctx.lineWidth=6;
+      ctx.beginPath();ctx.ellipse(cx+jiggle*0.3,cy+jiggle,auraR+i*6,(auraR+i*6)*0.78,0,0,Math.PI*2);ctx.stroke();
     }
     ctx.restore();
   }
 }
 
-// ---- ANIMATION LOOP ----
-function startAnim() {
+function startAnim(){
   if(animFrame) cancelAnimationFrame(animFrame);
-  function loop(){
-    if(currentUser) drawPig(data.users[fakeIP]?.amount||0);
-    animFrame = requestAnimationFrame(loop);
-  }
+  function loop(){ drawPig(myAmount); animFrame=requestAnimationFrame(loop); }
   loop();
 }
 
-// ---- FORMAT ----
 function fmt(n){ return n.toLocaleString('ko-KR')+'원'; }
 
-// ---- UI UPDATE ----
-function updateUI(){
-  const total = data.total||0;
-  const pct = Math.min(total/GOAL*100,100);
-  document.getElementById('total-amount').textContent = fmt(total);
-  document.getElementById('progress-fill').style.width = pct.toFixed(3)+'%';
-  document.getElementById('pct-badge').textContent = pct.toFixed(2)+'%';
-  document.getElementById('s-total').textContent = fmt(total);
-  document.getElementById('s-users').textContent = Object.keys(data.users).length+'명';
-
-  if(currentUser){
-    const my = data.users[fakeIP]?.amount||0;
-    document.getElementById('s-my').textContent = fmt(my);
-    const st = getStage(my);
-    document.getElementById('stage-label').textContent = st.emoji+' '+st.name+' ('+fmt(my)+')';
-  }
-  renderRanking();
-  renderGB();
+function updateHeader(total){
+  const GOAL=10000000;
+  const pct=Math.min(total/GOAL*100,100);
+  document.getElementById('total-amount').textContent=fmt(total);
+  document.getElementById('progress-fill').style.width=pct.toFixed(3)+'%';
+  document.getElementById('pct-badge').textContent=pct.toFixed(2)+'%';
+  document.getElementById('s-total').textContent=fmt(total);
 }
 
 function renderRanking(){
-  const users = Object.entries(data.users)
-    .map(([ip,u])=>({name:u.name,amount:u.amount,isMe:ip===fakeIP}))
+  const users=Object.entries(allUsers)
+    .map(([id,u])=>({name:u.name,amount:u.amount||0,isMe:id===uid}))
     .sort((a,b)=>b.amount-a.amount).slice(0,10);
-  const list = document.getElementById('rank-list');
+  document.getElementById('s-users').textContent=Object.keys(allUsers).length+'명';
+  const list=document.getElementById('rank-list');
   if(!users.length){list.innerHTML='<div class="empty">아직 참여자가 없어요!</div>';return;}
-  list.innerHTML = users.map((u,i)=>{
-    const nc = i===0?'gold':i===1?'silver':i===2?'bronze':'';
-    const st = getStage(u.amount);
-    const medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':''
+  list.innerHTML=users.map((u,i)=>{
+    const nc=i===0?'gold':i===1?'silver':i===2?'bronze':'';
+    const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
+    const st=getStage(u.amount);
     return `<li class="rank-item">
       <span class="rank-num ${nc}">${medal||i+1}</span>
       <span class="rank-name">${u.name}${u.isMe?'<span class="rank-me">나</span>':''}</span>
-      <span class="rank-stage">${st.emoji}</span>
+      <span style="font-size:13px;margin-right:2px">🐷</span>
       <span class="rank-amt">${fmt(u.amount)}</span>
     </li>`;
   }).join('');
 }
 
-function renderGB(){
-  const list = document.getElementById('gb-list');
-  const items = [...(data.guestbook||[])].reverse().slice(0,40);
+// ---- FIREBASE LISTENERS ----
+// Total
+onValue(totalRef, snap=>{
+  const total = snap.val()||0;
+  updateHeader(total);
+});
+
+// All users (for ranking)
+onValue(usersRef, snap=>{
+  allUsers = snap.val()||{};
+  document.getElementById('s-users').textContent=Object.keys(allUsers).length+'명';
+  renderRanking();
+  // update my amount
+  if(allUsers[uid]){
+    myAmount = allUsers[uid].amount||0;
+    document.getElementById('s-my').textContent=fmt(myAmount);
+    const st=getStage(myAmount);
+    document.getElementById('stage-label').textContent='🐷 '+st.name+' ('+fmt(myAmount)+')';
+  }
+});
+
+// Guestbook (latest 30)
+const gbQuery = query(gbRef, orderByChild('ts'), limitToLast(30));
+onValue(gbQuery, snap=>{
+  const items=[];
+  snap.forEach(child=>items.push(child.val()));
+  items.reverse();
+  const list=document.getElementById('gb-list');
   if(!items.length){list.innerHTML='<div class="empty">첫 응원 메시지를 남겨주세요! 🐷</div>';return;}
-  list.innerHTML = items.map(g=>
+  list.innerHTML=items.map(g=>
     `<div class="gb-item"><div class="gb-meta">💬 ${g.name} · ${g.time}</div><div class="gb-msg">${g.msg}</div></div>`
   ).join('');
-}
+});
 
-// ---- INTERACTIONS ----
-function startUser(){
-  const input = document.getElementById('name-input');
-  const name = input.value.trim();
-  if(!name){input.focus();return;}
-  if(!data.users[fakeIP]){
-    data.users[fakeIP]={name,amount:0};
-    saveData(data);
+// ---- INIT ----
+async function init(){
+  const snap = await get(myRef);
+  document.getElementById('loading').style.display='none';
+  if(snap.exists()){
+    currentUser=snap.val();
+    myAmount=currentUser.amount||0;
+    document.getElementById('name-screen').style.display='none';
+    document.getElementById('main-screen').style.display='block';
+    document.getElementById('my-name-tag').textContent=currentUser.name;
+    document.getElementById('s-my').textContent=fmt(myAmount);
+    startAnim();
+  } else {
+    document.getElementById('name-screen').style.display='block';
+    drawPig(0);
   }
-  currentUser = data.users[fakeIP];
+}
+init();
+
+// ---- ACTIONS (exposed to window) ----
+window.startUser = async function(){
+  const input=document.getElementById('name-input');
+  const name=input.value.trim();
+  if(!name){input.focus();return;}
+  const userData={name, amount:0};
+  await set(myRef, userData);
+  currentUser=userData;
+  myAmount=0;
   document.getElementById('name-screen').style.display='none';
   document.getElementById('main-screen').style.display='block';
-  document.getElementById('my-name-tag').textContent = currentUser.name;
-  updateUI();
+  document.getElementById('my-name-tag').textContent=name;
+  document.getElementById('s-my').textContent=fmt(0);
   startAnim();
-}
+};
 
-function donate(){
+window.donate = async function(){
   if(!currentUser) return;
-  if(data.total>=GOAL){
-    document.getElementById('donate-btn').disabled=true;
-    document.getElementById('donate-btn').textContent='🎉 목표 달성!';
-    launchConfetti();
-    return;
-  }
-  data.users[fakeIP].amount=(data.users[fakeIP].amount||0)+1;
-  data.total=(data.total||0)+1;
-  currentUser=data.users[fakeIP];
-  saveData(data);
-  updateUI();
+  const GOAL=10000000;
+  const btn=document.getElementById('donate-btn');
+  btn.disabled=true;
+  setTimeout(()=>btn.disabled=false, 300);
 
-  // coin insert anim
-  const pigWrap = document.getElementById('pig-wrap');
-  const coin = document.createElement('div');
-  coin.className='coin-insert';
-  coin.textContent='🪙';
+  // Increment user amount
+  await runTransaction(myRef, userData=>{
+    if(!userData) return {name:currentUser.name, amount:1};
+    userData.amount=(userData.amount||0)+1;
+    return userData;
+  });
+  // Increment total
+  await runTransaction(totalRef, val=>((val||0)+1));
+
+  myAmount++;
+
+  // coin anim
+  const pigWrap=document.getElementById('pig-wrap');
+  const coin=document.createElement('div');
+  coin.className='coin-insert';coin.textContent='🪙';
   pigWrap.appendChild(coin);
-  setTimeout(()=>coin.remove(), 650);
+  setTimeout(()=>coin.remove(),650);
 
   // float text
-  const btn = document.getElementById('donate-btn');
-  const r = btn.getBoundingClientRect();
-  const fl = document.createElement('div');
-  fl.className='click-float';
-  fl.textContent='+1원!';
-  fl.style.left=(r.left+r.width/2-20)+'px';
-  fl.style.top=(r.top-8)+'px';
+  const r=btn.getBoundingClientRect();
+  const fl=document.createElement('div');
+  fl.className='click-float';fl.textContent='+1원!';
+  fl.style.left=(r.left+r.width/2-20)+'px';fl.style.top=(r.top-8)+'px';
   document.body.appendChild(fl);
   setTimeout(()=>fl.remove(),950);
 
-  // milestone confetti
-  const my = data.users[fakeIP].amount;
-  if(my % 100 === 0) launchConfetti();
-}
+  if(myAmount%100===0) launchConfetti();
+};
 
-function postGB(){
-  const input = document.getElementById('gb-input');
-  const msg = input.value.trim();
+window.postGB = async function(){
+  const input=document.getElementById('gb-input');
+  const msg=input.value.trim();
   if(!msg||!currentUser) return;
-  const now = new Date();
-  const time = now.toLocaleDateString('ko-KR')+' '+now.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-  if(!data.guestbook) data.guestbook=[];
-  data.guestbook.push({name:currentUser.name, msg, time});
-  if(data.guestbook.length>200) data.guestbook.shift();
-  saveData(data);
+  const now=new Date();
+  const time=now.toLocaleDateString('ko-KR')+' '+now.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+  await push(gbRef,{name:currentUser.name,msg,time,ts:Date.now()});
   input.value='';
-  renderGB();
-  // scroll to top
-  document.getElementById('gb-list').scrollTop=0;
-}
+};
 
-function showTab(tab){
-  document.getElementById('panel-rank').style.display = tab==='rank'?'block':'none';
-  document.getElementById('panel-gb').style.display = tab==='gb'?'block':'none';
+window.showTab = function(tab){
+  document.getElementById('panel-rank').style.display=tab==='rank'?'block':'none';
+  document.getElementById('panel-gb').style.display=tab==='gb'?'block':'none';
   document.getElementById('tab-rank-btn').className='tab-btn'+(tab==='rank'?' active':'');
   document.getElementById('tab-gb-btn').className='tab-btn'+(tab==='gb'?' active':'');
-}
+};
 
 function launchConfetti(){
   const colors=['#f48fb1','#e91e8c','#fbbf24','#86efac','#a78bfa','#60a5fa','#fb7185'];
@@ -824,34 +525,18 @@ function launchConfetti(){
     setTimeout(()=>{
       const el=document.createElement('div');
       el.className='confetti-piece';
-      el.style.left=Math.random()*100+'vw';
-      el.style.top='-20px';
+      el.style.left=Math.random()*100+'vw';el.style.top='-20px';
       el.style.background=colors[Math.floor(Math.random()*colors.length)];
       el.style.transform=`rotate(${Math.random()*360}deg)`;
       el.style.animationDuration=(1.2+Math.random()*1.5)+'s';
       el.style.animationDelay=(Math.random()*0.5)+'s';
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(),3000);
+      document.body.appendChild(el);setTimeout(()=>el.remove(),3000);
     },i*30);
   }
 }
 
-// ---- INIT ----
-const existingUser = data.users[fakeIP];
-if(existingUser){
-  currentUser=existingUser;
-  document.getElementById('name-screen').style.display='none';
-  document.getElementById('main-screen').style.display='block';
-  document.getElementById('my-name-tag').textContent=currentUser.name;
-  updateUI();
-  startAnim();
-} else {
-  drawPig(0);
-}
-
-document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')startUser();});
-const gbInput = document.getElementById('gb-input');
-if(gbInput) gbInput.addEventListener('keydown',e=>{if(e.key==='Enter')postGB();});
+document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')window.startUser();});
+document.getElementById('gb-input').addEventListener('keydown',e=>{if(e.key==='Enter')window.postGB();});
 </script>
 </body>
 </html>
